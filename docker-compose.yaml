@@ -1,15 +1,15 @@
 version: '3.3'
 services:
   my-app: 
-    image: 783277376142.dkr.ecr.us-east-1.amazonaws.com/my-app:1.0
+    image: 783277376142.dkr.ecr.us-east-1.amazonaws.com/my-app:1.2
     ports:
       - 3000:3000
   mongodb:
     image: mongo
     ports:
       - 27017:27017
-    # volumes:
-      # - mongo-data:/data/db
+    volumes:
+      - mongo-data:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
@@ -24,6 +24,6 @@ services:
       - ME_CONFIG_MONGODB_SERVER=mongodb
     depends_on:
       - mongodb
-# volumes:
-#   mongo-data:
-#     driver: local
+volumes:
+  mongo-data:
+    driver: local
