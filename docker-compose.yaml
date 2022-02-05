@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 services:
   mongodb:
     image: mongo
@@ -11,6 +11,7 @@ services:
     image: mongo-express
     ports:
       - 8081:8081
+    restart: always
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
       - ME_CONFIG_MONGODB_ADMINPASSWORD=password
